@@ -61,11 +61,10 @@ class ChallengePromptMaker(DockWidget):
         
         self.color_manager = ColorGenerator(self.settings)   
         self.category_dialog = NONE
-        #self.getActiveCategory()
+        
         self.setUI()
     
     #Settings
-    
     def reloadRequired(self): 
         self.loadCategoryList()
         self.loadSettings()
@@ -94,7 +93,6 @@ class ChallengePromptMaker(DockWidget):
         self.roll_count   = self.settings["roll_count"] 
 
          
-         
     def getActiveCategory(self):
         active_category = [] 
         for i in range(0, self.roll_limit ): 
@@ -103,8 +101,9 @@ class ChallengePromptMaker(DockWidget):
             active_category.append([])
             for cat in categories:
                 if slot[cat]  == 1: active_category[i].append(cat) 
-        #self.active_category = active_category
+         
         return active_category
+
     # UI LAYOUT
     def setUI(self):
         self.base_widget = QWidget()
