@@ -13,26 +13,20 @@
 #-----------------------------------------------------------------------------#
 # You should have received a copy of the GNU General Public License           #
 # along with this program.                                                    #
-# If not, see https://www.gnu.org/licenses/                                   #
-# ----------------------------------------------------------------------------#
-# Thank you to: AkiR , Grum999, KnowZero                                      #
-# Who provided much of the base code and helped me making this.               #
+# If not, see https://www.gnu.org/licenses/                                   # 
 # -----------------------------------------------------------------------------
-# This is docker that  toggle pen pressure on/off of 6 brush property         #
-# [Size, Opacity, Flow, Softness, Scatter, Rotation ] and adjust              #
-# brush hfade without opening the Brush Editor.                               #
+# ChallengePromptMaker is a docker that  generates drawing challenge prompts  #
+# from a list of categories along side a four color - color palette           #
+# in split complementary color scheme.                                        #
 # -----------------------------------------------------------------------------
- 
-  
-
+    
  
 from krita import *  
-import random, os, json, time
-from datetime import datetime
+import os, json  
 
-from PyQt5.QtCore import ( Qt, QItemSelectionModel, QSize,  QTimer, QRect, pyqtSignal, QEvent)
+from PyQt5.QtCore import ( Qt, pyqtSignal, QEvent)
 
-from PyQt5.QtGui import (QPainter, QColor, QStandardItemModel,QStandardItem)
+from PyQt5.QtGui import (QStandardItemModel)
 
 
 from PyQt5.QtWidgets import ( 
@@ -65,19 +59,6 @@ class DoubleSpinBox(QDoubleSpinBox):
         super(DoubleSpinBox, self).focusOutEvent(e)
         self.stepChanged.emit()
 
-class CheckableComboBox(QComboBox):
-    def __init__(self):
-        super(CheckableComboBox, self).__init__()
-        self.view().pressed.connect(self.handleItemPressed)
-        self.setModel(QStandardItemModel(self))
-
-    def handleItemPressed(self, index):
-        item = self.model().itemFromIndex(index)
-        if item.checkState() == Qt.Checked:
-            item.setCheckState(Qt.Unchecked)
-        else:
-            item.setCheckState(Qt.Checked)
-
 class CategoryDialog(QDialog):
     def __init__(self, parent, title = "", roll_limit = 4):
         super().__init__(parent)
@@ -93,8 +74,6 @@ class CategoryDialog(QDialog):
 
         self.loadDefault()
         self.connectSignals()
-
-        
 
   #Settings
     def loadCategoryList(self):
@@ -383,10 +362,8 @@ class CategoryDialog(QDialog):
 
         self.chk_sequence.stateChanged.connect(self.toggleInSequence)
          
-        self.list_category.itemChanged.connect(self.categoryAction)
-        self.list_category.itemClicked.connect(self.toCategoryLineEdit)
-
-        self.list_item.itemClicked.connect(self.toItemLineEdit)
+        self.list_category.itemChanged.connect(self.categoryAction) 
+ 
 
     def eventFilter(self, source, event):
         if (event.type() == QEvent.ContextMenu and source is self.list_item):
@@ -430,8 +407,7 @@ class CategoryDialog(QDialog):
 
                     self.list_category.addItem(item)       
 
-    def loadItems(self, text):
-        #combo_item_category 
+    def loadItems(self, text): 
         self.list_item.clear()
         
         if text and len(self.category_list[text]) > 0 : 
@@ -479,25 +455,12 @@ class CategoryDialog(QDialog):
                 selectedCategory.append(self.txt_list.text())
                 QListWidgetItem(self.txt_list.text(), self.list_item)
             else:
-                index = self.toEditRow.text() in selectedCategory
-                selectedCategory.pop(index)
-                selectedCategory.append(self.txt_list.text())
+                index = self.toEditRow.text() in selectedCategory 
+                selectedCategory[index+1] = self.txt_list.text() 
                 self.toEditRow.setText(self.txt_list.text()) 
                 self.toEditRow = None
         self.txt_list.setText("")
-        
-        pass
-
-
-    def toCategoryLineEdit(self,category):
-        pass
-        #self.txt_category.setText(category.text())
-
-    def toItemLineEdit(self, item):
-        pass
-        #self.txt_list.setText(item.text())
-
-
+     
     def removeCategory(self):
         category = self.list_category.item((self.list_category.currentRow()))
         if category:
@@ -513,8 +476,6 @@ class CategoryDialog(QDialog):
                 
                 self.combo_item_category.removeItem(self.combo_item_category.findText(category.text()))
  
-        
-
     def removeItem(self):
         selected_category =  self.category_list[self.combo_item_category.currentText()]
         item = self.list_item.item(self.list_item.currentRow())

@@ -13,17 +13,15 @@
 #-----------------------------------------------------------------------------#
 # You should have received a copy of the GNU General Public License           #
 # along with this program.                                                    #
-# If not, see https://www.gnu.org/licenses/                                   #
-# ----------------------------------------------------------------------------#
-# Thank you to: AkiR , Grum999, KnowZero                                      #
-# Who provided much of the base code and helped me making this.               #
+# If not, see https://www.gnu.org/licenses/                                   # 
 # -----------------------------------------------------------------------------
-# This is docker that  toggle pen pressure on/off of 6 brush property         #
-# [Size, Opacity, Flow, Softness, Scatter, Rotation ] and adjust              #
-# brush hfade without opening the Brush Editor.                               #
+# ChallengePromptMaker is a docker that  generates drawing challenge prompts  #
+# from a list of categories along side a four color - color palette           #
+# in split complementary color scheme.                                        #
 # -----------------------------------------------------------------------------
+    
   
-from pickle import NONE
+ 
 from krita import *
 import  os,random, json
 from datetime import datetime
@@ -33,8 +31,7 @@ from PyQt5.QtCore import ( Qt, QSize,  QTimer )
  
 
 from PyQt5.QtWidgets import ( 
-        QVBoxLayout, QWidget, QLabel,  QGridLayout, 
-        QPushButton, QToolButton  
+        QVBoxLayout, QWidget, QLabel,  QGridLayout,  QToolButton  
 )
 
 
@@ -61,7 +58,6 @@ class ChallengePromptMaker(DockWidget):
         
         self.color_manager = ColorGenerator(self.settings)   
         self.category_dialog = NONE
-        
         self.setUI()
     
     #Settings
@@ -93,6 +89,8 @@ class ChallengePromptMaker(DockWidget):
         self.roll_count   = self.settings["roll_count"] 
 
          
+        
+        
     def getActiveCategory(self):
         active_category = [] 
         for i in range(0, self.roll_limit ): 
@@ -101,7 +99,6 @@ class ChallengePromptMaker(DockWidget):
             active_category.append([])
             for cat in categories:
                 if slot[cat]  == 1: active_category[i].append(cat) 
-         
         return active_category
 
     # UI LAYOUT
@@ -175,15 +172,11 @@ class ChallengePromptMaker(DockWidget):
        
         self.challenge_container.addWidget(self.prompt_widget)
     
-        #       self.timer.start(1000)
         self.timer = QTimer() 
         self.setTime(self.label_time)
         self.timer.timeout.connect(lambda: self.setTime(self.label_time, -1))
  
-
-
-
-
+ 
     #CANVS EVENT
     def resizeEvent(self, event):    
         pass 
@@ -267,9 +260,7 @@ class ChallengePromptMaker(DockWidget):
             self.category_dialog.loadDefault()
         else:
             pass
-
-
-
+ 
 
     #CHALLENGE RANDOMIZER
     def generateChallenge(self):
@@ -277,30 +268,35 @@ class ChallengePromptMaker(DockWidget):
         self.timerReset()
 
         self.label_prompt.setText("")
-        self.generateTextChallenge(self.roll_count) 
+        self.generateTextChallenge() 
  
 
-    def generateTextChallenge(self, count):
+    def generateTextChallenge(self):
+        slot = []
+        for i in range(0,self.roll_count): 
+            slot.append(i)
+        
         category_slot = self.getActiveCategory()
-        for i in range(0,self.roll_count):  
-            sel_cat = i
-            
-            if self.settings["slot_in_sequence"] == 0:
-                sel_cat =  random.randint(0, count-1)  
 
-            random.seed(datetime.now())
+        for i in range(0,self.roll_count):   
+            sel_cat = i
             category = ""
+
+            if self.settings["slot_in_sequence"] == 0:
+                sel_cat =  slot.pop([random.randint(0, len(slot)-1)]) 
+
             if len(category_slot[sel_cat]) > 0:
+                random.seed(datetime.now())
                 category = category_slot[sel_cat][random.randint(0, len(category_slot[sel_cat])-1)]
 
-            random.seed(datetime.now())
             if category in self.category_list: 
+                random.seed(datetime.now())
                 items = self.category_list[category]
                 selected_item = items[random.randint(0, len(items)-1)]
 
                 self.label_prompt.setText(self.label_prompt.text()+selected_item+"\n")
 
-                for i in range(0,count): 
+                for i in range(0,self.roll_count): 
                     if category in category_slot[i]:
                         category_slot[i].remove(category)
 
