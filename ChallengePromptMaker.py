@@ -283,7 +283,7 @@ class ChallengePromptMaker(DockWidget):
             category = ""
 
             if self.settings["slot_in_sequence"] == 0:
-                sel_cat =  slot.pop([random.randint(0, len(slot)-1)]) 
+                sel_cat =  slot.pop(random.randint(0, len(slot)-1)) 
 
             if len(category_slot[sel_cat]) > 0:
                 random.seed(datetime.now())
