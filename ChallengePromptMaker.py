@@ -57,7 +57,7 @@ class ChallengePromptMaker(DockWidget):
         self.loadDefault() 
         
         self.color_manager = ColorGenerator(self.settings)   
-        self.category_dialog = NONE
+        self.category_dialog = None
         self.setUI()
     
     #Settings
@@ -250,7 +250,7 @@ class ChallengePromptMaker(DockWidget):
         
     #CATEGORY SETTING
     def openCategoryBox(self):   
-        if self.category_dialog == NONE:
+        if self.category_dialog == None:
             self.category_dialog = CategoryDialog(self, "Settings", self.roll_limit)
             self.category_dialog.finished.connect(self.reloadRequired)
  
