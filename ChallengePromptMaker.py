@@ -94,8 +94,7 @@ class ChallengePromptMaker(DockWidget):
         self.roll_count   = self.settings["roll_count"] 
 
          
-        
-        
+         
     def getActiveCategory(self):
         active_category = [] 
         for i in range(0, self.roll_limit ): 
