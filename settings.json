@@ -18,12 +18,12 @@
     },
     "category_slots": {
         "1": {
-            "Fruits": 1,
-            "Vegetables": 1,
-            "Animals": 0,
+            "Fruits": 0,
+            "Vegetables": 0,
+            "Animals": 1,
             "Trees and Shrubs": 0,
-            "Gems": 1,
-            "Vehicles": 0,
+            "Gems": 0,
+            "Vehicles": 1,
             "Magical Creature": 0,
             "Magical Creatures": 0
         },
@@ -38,24 +38,24 @@
             "Magical Creatures": 0
         },
         "3": {
-            "Vegetables": 1,
-            "Fruits": 1,
-            "Animals": 1,
-            "Trees and Shrubs": 1,
+            "Vegetables": 0,
+            "Fruits": 0,
+            "Animals": 0,
+            "Trees and Shrubs": 0,
             "Gems": 1,
-            "Vehicles": 1,
-            "Bread and Dessert": 1,
-            "Food": 1,
+            "Vehicles": 0,
+            "Bread and Dessert": 0,
+            "Food": 0,
             "Magical Creatures": 1
         },
         "4": {
-            "Fruits": 1,
+            "Fruits": 0,
             "Vegetables": 1,
-            "Animals": 1,
+            "Animals": 0,
             "Trees and Shrubs": 1,
             "Vehicles": 1,
-            "Gems": 1,
-            "Magical Creatures": 1
+            "Gems": 0,
+            "Magical Creatures": 0
         }
     }
 }
