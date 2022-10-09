@@ -6,7 +6,7 @@ A plugin for [Krita](https://krita.org).
 ## What is Challenge Prompt Maker? 
 
 *Challenge Prompt Maker* is a docker that  generates drawing challenge prompts 
-from a list of categories along side a four slot color palette in split complementary color scheme. 
+from a customizable list of categories along side a four slot color palette in split complementary color scheme. 
 The plugin uses HSV to generate the color pairing.
 
 ---
