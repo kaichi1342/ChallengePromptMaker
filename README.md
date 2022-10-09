@@ -1,11 +1,11 @@
-# Compact Brush Toggler
+# Challenge Prompt Maker
 
 A plugin for [Krita](https://krita.org).
 
 
-## What is Compact Brush Toggler? 
+## What is Challenge Prompt Maker? 
 
-*ChallengePromptMaker is a docker* that  generates drawing challenge prompts 
+*Challenge Prompt Maker* is a docker that  generates drawing challenge prompts 
 from a list of categories along side a four slot color palette in split complementary color scheme. 
 The plugin uses HSV to generate the color pairing.
 
@@ -111,6 +111,27 @@ The configuration has more parts than the main plugin.
 4. Normal Distribution - Attempts to distribute odds based on Normal Bell curve.
 5. Equal Distribution  - Make the odds of generating low, high, mid saturation/value equal .
 
+**Odds Distribution**
+
+| Odds Skew | %Low | %Mid | %High |
+|-----------|-----|-----|------|
+| More Low  | 90  |  5  |  5   |
+| More Mid  | 5   | 90  |  5   |
+| More High | 5   | 5   |  90  |
+| Normal    | 14  | 72  |  14  |
+| Equal     | 33  | 34  |  33  |
+
+- Even if the odds is skewed to low there is still 10% chance of getting color with higher saturation/value. 
+
+**Sample Color Palette Generated**
+
+|           | Low Sat | Mid Sat | High Sat |
+|-----------|-----|-----|------|
+| Low Val   | ![LSLV](./screenshots/ui-lslv.png) | ![LSLV](./screenshots/ui-lsmv.png)  | ![LSLV](./screenshots/ui-lshv.png)  |
+| Mid Val   | ![LSLV](./screenshots/ui-mslv.png) | ![LSLV](./screenshots/ui-msmv.png)  | ![LSLV](./screenshots/ui-mshv.png)  |
+| High Val  | ![LSLV](./screenshots/ui-hslv.png) | ![LSLV](./screenshots/ui-hsmv.png)  | ![LSLV](./screenshots/ui-hshv.png)  |
+
+- Note that color generated in each level is also dependent on the range setup as low, mid, high. 
 
 
 ### Functionalities
@@ -123,13 +144,16 @@ This plugin main function  are;
 
 If the global pressure setting is off, then this plugin pressure setting will also be off. 
 
-[Video Compact Brush Toggler in Action](https://drive.google.com/file/d/1pQa8cNno-4sxo2xajcnBNjxIr7wJ17fM/view?usp=sharing)
+[Video Challenge Prompt Maker in Action](https://drive.google.com/file/d/1pQa8cNno-4sxo2xajcnBNjxIr7wJ17fM/view?usp=sharing)
 
 ### Notes
- 
+ - This plugin utilizes HSV color model in  generating color. 
+ - This plugin stores items, categories and settings in JSON files. It is possible to edit the settings and category/ item by editing these files.  
+ - Limit for slots is hard coded to be at max 4.
+ - Limit for color box is 4, only 4 color is generated based on the splitcomplementary color scheme.
 
-### Plans --
- 
+### Plans 
+ - Adding manual editing of color chances
 
 ### Bugs and Known Issues
  
@@ -137,8 +161,8 @@ If the global pressure setting is off, then this plugin pressure setting will al
 ## Downloads - Install - Execute 
 
 ### Download
-- **[ZIP](https://github.com/kaichi1342/CompactBrushToggler/archive/refs/heads/v.0.1.1b.zip)**
-- **[Source](https://github.com/kaichi1342/CompactBrushToggler)**
+- **[ZIP](https://github.com/kaichi1342/ChallengePromptMaker/archive/refs/heads/v.0.1.0.zip)**
+- **[Source](https://github.com/kaichi1342/ChallengePromptMaker)**
 
 ### Install
 
@@ -146,34 +170,20 @@ If the global pressure setting is off, then this plugin pressure setting will al
 2. Got to Tools -> Scripts -> **Import Python Plugins** and select 
 **CompactBrushToggler.zip** archive. 
 3. Restart [Krita](https://krita.org)
-4. Make sure Compact Brush Toggler is enabled in Plugin Manager. 
-if not enable it by going to Settings -> Configure Krita -> **Python Plugin Manager** and click to check **Compact Brush Toggler**.
+4. Make sure Challenge Prompt Maker is enabled in Plugin Manager. 
+if not enable it by going to Settings -> Configure Krita -> **Python Plugin Manager** and click to check **Challenge Prompt Maker**.
 5. Restart Krita.
-6. View **Compact Brush Toggler** to your screen by going to Settings -> Dockers -> **Compact Brush Toggler**
+6. View **Challenge Prompt Maker** to your screen by going to Settings -> Dockers -> **Challenge Prompt Maker**
 
 
 ### Tested Platforms
-- Krita 5.1.0 Pre-alpha
-- Krita 5 beta 5
+- Krita 5.1.1 
 
 ### Release Log
 
-2022-03-11  : Version 0.1.2
-- Fix Opacity / Flow Load Status
-- Added Overlay Mode for Smudge Brush
-- Added disabling of none existing properties
-- Re-organize UI 
-
-2021-12-22  : Version 0.1.1b
-- First Released Version 
-- Added ability to toggle listview checkbox of the brush property
-- Added rotation and scatter toggles
-- Added a slider control for brush fade
-- Re-organized UI 
-- Removed brush name label
-
-2021-12-16  : Version 0.1.0 
-- First Implemented Version
+2022-10-09  : Version 0.1.0
+- First Released Version  
+ 
 
 ### Thanks to:
 This docker has been possible with the help of AkiR , Grum999, KnowZero 
@@ -181,14 +191,14 @@ who provided much of the base code that have helped me develop this.
 
 ## License
 
-### *Compact Brush Toggler* is released under the GNU General Public License (version 3 or any later version).
+### *Challenge Prompt Maker* is released under the GNU General Public License (version 3 or any later version).
 
-*Compact Brush Toggler* is free software: you can redistribute it and/or modify 
+*Challenge Prompt Maker* is free software: you can redistribute it and/or modify 
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.                               
     
-*Compact Brush Toggler* is distributed in the hope that it will be useful,
+*Challenge Prompt Maker* is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU General Public License for more details.
