@@ -345,8 +345,6 @@ class CategoryDialog(QDialog):
         self.setting_container.addWidget(self.action_widget ) 
 
 
-
-
     def connectSignals(self): 
         self.combo_roll_category.currentIndexChanged.connect(self.loadCategories)
         self.combo_item_category.currentTextChanged.connect(self.loadItems)
@@ -363,6 +361,7 @@ class CategoryDialog(QDialog):
         self.chk_sequence.stateChanged.connect(self.toggleInSequence)
          
         self.list_category.itemChanged.connect(self.categoryAction) 
+        self.list_category.itemClicked.connect(self.changeItemCombo)
  
 
     def eventFilter(self, source, event):
@@ -415,7 +414,11 @@ class CategoryDialog(QDialog):
                 QListWidgetItem(item, self.list_item)
 
 
-
+    def changeItemCombo(self,category): 
+        #self.loadItems(category.text())
+        itemComboIndex = self.combo_item_category.findText(category.text())
+        if itemComboIndex != -1 :
+            self.combo_item_category.setCurrentIndex(itemComboIndex)
 
     def categoryAction(self, category):
         i = str(self.combo_roll_category.currentIndex() + 1) 
