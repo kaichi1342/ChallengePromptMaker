@@ -168,7 +168,8 @@ If the global pressure setting is off, then this plugin pressure setting will al
 
 1. Open [Krita](https://krita.org)
 2. Got to Tools -> Scripts -> **Import Python Plugins** and select 
-**CompactBrushToggler.zip** archive. 
+
+**ChallengePromptMaker.zip** archive. 
 3. Restart [Krita](https://krita.org)
 4. Make sure Challenge Prompt Maker is enabled in Plugin Manager. 
 if not enable it by going to Settings -> Configure Krita -> **Python Plugin Manager** and click to check **Challenge Prompt Maker**.
@@ -200,8 +201,3 @@ See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program. If not, see https://www.gnu.org/licenses/                                   
-
-
-
-                            
- 
