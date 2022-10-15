@@ -1,0 +1,61 @@
+{
+    "roll_count": 4,
+    "timer_limit": 540,
+    "slot_in_sequence": 0,
+    "saturation_priority": "High",
+    "value_priority": "High",
+    "saturation_cutoff": {
+        "low": 2,
+        "mid": 100,
+        "high": 220,
+        "lim": 255
+    },
+    "value_cutoff": {
+        "low": 50,
+        "mid": 100,
+        "high": 220,
+        "lim": 250
+    },
+    "category_slots": {
+        "1": {
+            "Fruits": 1,
+            "Vegetables": 1,
+            "Animals": 1,
+            "Trees and Shrubs": 1,
+            "Gems": 1,
+            "Vehicles": 1,
+            "Magical Creature": 1,
+            "Magical Creatures": 1
+        },
+        "2": {
+            "Fruits": 1,
+            "Vegetables": 1,
+            "Trees and Shrubs": 1,
+            "Animals": 1,
+            "Gems": 1,
+            "Vehicles": 1,
+            "Bread and Dessert": 1,
+            "Magical Creatures": 1
+        },
+        "3": {
+            "Vegetables": 1,
+            "Fruits": 1,
+            "Animals": 1,
+            "Trees and Shrubs": 1,
+            "Gems": 1,
+            "Vehicles": 1,
+            "Bread and Dessert": 1,
+            "Food": 1,
+            "Magical Creatures": 1
+        },
+        "4": {
+            "Fruits": 1,
+            "Vegetables": 1,
+            "Animals": 1,
+            "Trees and Shrubs": 1,
+            "Vehicles": 1,
+            "Gems": 1,
+            "Magical Creatures": 1
+        }
+    }
+}
