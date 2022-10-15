@@ -144,7 +144,7 @@ This plugin main function  are;
 
 If the global pressure setting is off, then this plugin pressure setting will also be off. 
 
-[Video Challenge Prompt Maker in Action](https://drive.google.com/file/d/1pQa8cNno-4sxo2xajcnBNjxIr7wJ17fM/view?usp=sharing)
+[Video Challenge Prompt Maker in Action](https://drive.google.com/file/d/1ADQ_XU4Yjgyn-OUfrI9FJOPRlLT3hJeI/view?usp=sharing)
 
 ### Notes
  - This plugin utilizes HSV color model in  generating color. 
