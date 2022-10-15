@@ -183,12 +183,7 @@ if not enable it by going to Settings -> Configure Krita -> **Python Plugin Mana
 
 2022-10-09  : Version 0.1.0
 - First Released Version  
- 
-
-### Thanks to:
-This docker has been possible with the help of AkiR , Grum999, KnowZero 
-who provided much of the base code that have helped me develop this.               
-
+  
 ## License
 
 ### *Challenge Prompt Maker* is released under the GNU General Public License (version 3 or any later version).
