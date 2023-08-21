@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------#
-# Prompt Generator - Copyright (c) 2021 - kaichi1342                          #
+# ChallengePromptMaker - Copyright (c) 2022 - kaichi1342                      #
 # ----------------------------------------------------------------------------#
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -104,7 +104,6 @@ class ChallengePromptMaker(DockWidget):
     # UI LAYOUT
     def setUI(self):
         self.base_widget = QWidget()
-        
 
         self.challenge_container = QVBoxLayout()
         self.challenge_container.setContentsMargins(1, 1, 1, 1)
@@ -286,11 +285,11 @@ class ChallengePromptMaker(DockWidget):
                 sel_cat =  slot.pop(random.randint(0, len(slot)-1)) 
 
             if len(category_slot[sel_cat]) > 0:
-                random.seed(datetime.now())
+                random.seed()
                 category = category_slot[sel_cat][random.randint(0, len(category_slot[sel_cat])-1)]
 
             if category in self.category_list: 
-                random.seed(datetime.now())
+                random.seed()
                 items = self.category_list[category]
                 selected_item = items[random.randint(0, len(items)-1)]
 
@@ -310,16 +309,16 @@ class ChallengePromptMaker(DockWidget):
         val = cm.pickVal() 
 
         #Main Color
-        random.seed(datetime.now())
+        random.seed()
         self.colorbox1.changeColorHSV(  hue, sat, val) 
 
         #Analogous Color
-        random.seed(datetime.now())
+        random.seed()
         self.colorbox2.changeColorHSV( cm.pickHue(hue, random.randint(15, 40)) , cm.pickSat(sat, True), cm.pickVal(val, True) ) 
         self.colorbox3.changeColorHSV( cm.pickHue(hue, -1 * random.randint(15, 40)) , cm.pickSat(sat, True), cm.pickVal(val, True) ) 
          
         #Complementary Color
-        random.seed(datetime.now())
+        random.seed()
         self.colorbox4.changeColorHSV( cm.pickHue(hue, random.randint(170, 190)), cm.pickSat(sat, True), cm.pickVal(val, True))
         
         

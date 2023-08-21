@@ -85,7 +85,7 @@ class ColorGenerator():
 
     def pickHue(self, hue = -1, offset = 0):
             if(hue < 0 ): 
-                random.seed(datetime.now())
+                random.seed()
                 return random.randint(0, 360) 
             else:
                 if(hue + offset > 360):
@@ -98,7 +98,7 @@ class ColorGenerator():
     def pickSat(self, sat = -1, w_offset = False):
         self.sat_cutoff = self.setCutOffPoint(self.settings["saturation_priority"])
         if(sat < 0 ): 
-            random.seed(datetime.now())
+            random.seed()
             cutoff = random.randint(0, 100)
             if cutoff <= self.sat_cutoff[0]:
                 return random.randint(self.sat_limit["low"],self.sat_limit["mid"])
@@ -121,7 +121,7 @@ class ColorGenerator():
     def pickVal(self, val = -1, w_offset = False):
         self.val_cutoff = self.setCutOffPoint(self.settings["value_priority"])
         if(val < 0 ): 
-            random.seed(datetime.now())
+            random.seed()
             cutoff = random.randint(0, 100)
             if cutoff <= self.val_cutoff[0]:
                 return random.randint(self.val_limit["low"],self.val_limit["mid"])
@@ -142,7 +142,7 @@ class ColorGenerator():
                 return val + offset
     
     def randomizedOffset(self):
-        random.seed(datetime.now()) 
+        random.seed() 
         if ( random.randint(1, 500) % 2 == 0 ):
             return random.randint(5,20)
         else: 
