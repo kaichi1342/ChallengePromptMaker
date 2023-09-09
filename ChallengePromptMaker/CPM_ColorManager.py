@@ -160,23 +160,10 @@ class ColorGenerator():
         else:
             return [33,66]
 
-    def setupColor(self, r, g, b, a): 
+    def setupColor(self, color): 
         doc = Krita.instance().activeDocument()
-        item = { 
-                "red"   : r,
-                "green" : g,
-                "blue"  : b,
-                "alpha" : a,
-                "color05" : -1
-        }
-
+        canvas = Krita.instance().activeWindow().activeView().canvas() 
         color_to_set = ManagedColor(doc.colorModel(), doc.colorDepth(), doc.colorProfile())
-        colorComponents = color_to_set.components()
-        if (item["blue"] >= 0)  : colorComponents[0] = item["blue"]
-        if (item["green"] >= 0): colorComponents[1] = item["green"]
-        if (item["red"] >= 0) : colorComponents[2] = item["red"]
-        if (item["alpha"] >= 0): colorComponents[3] = item["alpha"]
-        if (item["color05"] >= 0): colorComponents[4] = item["color05"]
-  
-        color_to_set.setComponents(colorComponents)
-        return color_to_set 
+        to_set = color_to_set.fromQColor(color, canvas) 
+    
+        return to_set 

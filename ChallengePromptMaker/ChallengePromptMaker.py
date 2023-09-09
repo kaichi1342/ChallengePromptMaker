@@ -326,7 +326,7 @@ class ChallengePromptMaker(DockWidget):
 
     
     def setFGColor(self,ColorBox):   
-        color_to_set = self.color_manager.setupColor(ColorBox.color.redF(), ColorBox.color.greenF(), ColorBox.color.blueF(), ColorBox.color.alphaF()) 
+        color_to_set = self.color_manager.setupColor(ColorBox.color) 
         Krita.instance().activeWindow().activeView().setForeGroundColor(color_to_set) 
 
   
