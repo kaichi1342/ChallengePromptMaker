@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------#
-# Prompt Generator - Copyright (c) 2021 - kaichi1342                          #
+# ChallengePromptMaker - Copyright (c) 2022 - kaichi1342                      #
 # ----------------------------------------------------------------------------#
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -20,6 +20,7 @@
 # in split complementary color scheme.                                        #
 # -----------------------------------------------------------------------------
     
+  
  
 from krita import *  
 import os, json  
@@ -104,15 +105,9 @@ class CategoryDialog(QDialog):
         for option in range(0,self.roll_limit):
             self.combo_roll_category.addItem("Categories in Roll Slot "+ str(option+1))
  
-        self.categories =  list( self.category_list.keys())  
-       
-        self.combo_item_category.clear()
-        if len(self.categories) > 0 :
-            for cat in self.categories:
-                self.combo_item_category.addItem(cat)
-
-            self.loadCategories(0)  
-            self.loadItems(self.categories[0])
+        self.categories =  list(self.category_list.keys())  
+        
+        self.loadItemCombo()
     
         self.color_priority_option = ["Low", "Mid", "High", "Normal", "Equal"]
        
@@ -140,6 +135,8 @@ class CategoryDialog(QDialog):
 
         self.txt_category.setText("")
         self.txt_list.setText("")
+
+
 
     def evalSettingValue(self, value, low, high, off_low = 0, off_high = 0 ):
         if value < low: 
@@ -333,7 +330,7 @@ class CategoryDialog(QDialog):
  
 
         self.chk_sequence   = QCheckBox("&Pick Slots In Sequence")
-        self.button_ok      = QPushButton("&OK")
+        self.button_ok      = QPushButton("&Save")
         self.button_cancel  = QPushButton("&Cancel") 
         
         self.action_container.addWidget(self.chk_sequence, 0, 0, 1, 2 )   
@@ -344,6 +341,8 @@ class CategoryDialog(QDialog):
         
         self.setting_container.addWidget(self.action_widget ) 
 
+
+    #SIGNALS
 
     def connectSignals(self): 
         self.combo_roll_category.currentIndexChanged.connect(self.loadCategories)
@@ -362,7 +361,8 @@ class CategoryDialog(QDialog):
          
         self.list_category.itemChanged.connect(self.categoryAction) 
         self.list_category.itemClicked.connect(self.changeItemCombo)
- 
+    
+    #Event Filter
 
     def eventFilter(self, source, event):
         if (event.type() == QEvent.ContextMenu and source is self.list_item):
@@ -384,6 +384,8 @@ class CategoryDialog(QDialog):
         return super(CategoryDialog, self).eventFilter(source, event)
 
 
+
+    #Categories and Item Load Category
     def loadCategories(self, index):
         self.category_slots = self.settings["category_slots"]
 
@@ -406,6 +408,16 @@ class CategoryDialog(QDialog):
 
                     self.list_category.addItem(item)       
 
+
+    def loadItemCombo(self):
+        self.combo_item_category.clear()
+        if len(self.categories) > 0 :
+            for cat in self.categories:
+                self.combo_item_category.addItem(cat)
+
+            self.loadCategories(0)  
+            self.loadItems(self.categories[0])
+
     def loadItems(self, text): 
         self.list_item.clear()
         
@@ -414,8 +426,7 @@ class CategoryDialog(QDialog):
                 QListWidgetItem(item, self.list_item)
 
 
-    def changeItemCombo(self,category): 
-        #self.loadItems(category.text())
+    def changeItemCombo(self,category):  
         itemComboIndex = self.combo_item_category.findText(category.text())
         if itemComboIndex != -1 :
             self.combo_item_category.setCurrentIndex(itemComboIndex)
@@ -430,7 +441,7 @@ class CategoryDialog(QDialog):
         
 
     def addToCategory(self):
-        if self.txt_category.text() not in self.categories:
+        if  self.txt_category.text() and self.txt_category.text() not in self.categories:
             if self.toEditRow == None:  
                 self.category_list[self.txt_category.text()] = []
                 item = QListWidgetItem(self.txt_category.text())
@@ -448,12 +459,14 @@ class CategoryDialog(QDialog):
                 self.toEditRow = None
                 self.categories = list( self.category_list.keys()) 
         
+        self.loadItemCombo()
+        
         self.txt_category.setText("")
 
     def addToItems(self): 
         selectedCategory =  self.category_list[self.combo_item_category.currentText()]
         
-        if self.txt_list.text() not in selectedCategory:
+        if self.txt_list.text() and self.txt_list.text() not in selectedCategory:
             if self.toEditRow == None:
                 selectedCategory.append(self.txt_list.text())
                 QListWidgetItem(self.txt_list.text(), self.list_item)
@@ -530,9 +543,7 @@ class CategoryDialog(QDialog):
             outfile.write(json_category)
         
 
-        self.done(1)
-        
-        
+        self.loadItemCombo()
 
 
 
