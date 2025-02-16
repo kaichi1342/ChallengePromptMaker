@@ -293,7 +293,7 @@ class ChallengePromptMaker(DockWidget):
                 items = self.category_list[category]
                 selected_item = items[random.randint(0, len(items)-1)]
 
-                self.label_prompt.setText(self.label_prompt.text()+selected_item+"\n")
+                self.label_prompt.setText(self.label_prompt.text()+"- "+selected_item+"\n")
 
                 for i in range(0,self.roll_count): 
                     if category in category_slot[i]:
