@@ -192,6 +192,8 @@ if not enable it by going to Settings -> Configure Krita -> **Python Plugin Mana
 DND creatures list: matterabyte.github.io
 Animals: https://github.com/skjorrface/animals.txt/
 Gemstones: https://github.com/siliconjungle/gemstones
+Car models: https://en.wikipedia.org/w/index.php?title=List_of_best-selling_automobiles
+Food: https://github.com/pi-co/List-of-all-Foods
   
 ## License
 
