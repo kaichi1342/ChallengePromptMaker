@@ -186,6 +186,15 @@ if not enable it by going to Settings -> Configure Krita -> **Python Plugin Mana
 - First Released Version  
 2023-09-09  : Version 0.1.3
 - Change setupColor to use MangeColor.fromQcolor
+
+
+## Sources of lists
+DND creatures list: matterabyte.github.io
+Animals: https://github.com/skjorrface/animals.txt/
+Gemstones: https://github.com/siliconjungle/gemstones
+Car models: https://en.wikipedia.org/w/index.php?title=List_of_best-selling_automobiles
+Food:200 random items from https://github.com/pi-co/List-of-all-Foods
+Instruments:200 random items from https://en.wikipedia.org/wiki/List_of_musical_instruments
   
 ## License
 
