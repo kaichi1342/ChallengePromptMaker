@@ -186,6 +186,11 @@ if not enable it by going to Settings -> Configure Krita -> **Python Plugin Mana
 - First Released Version  
 2023-09-09  : Version 0.1.3
 - Change setupColor to use MangeColor.fromQcolor
+
+
+## Sources of lists
+DND creatures list: matterabyte.github.io
+Animals: https://github.com/skjorrface/animals.txt/
   
 ## License
 
