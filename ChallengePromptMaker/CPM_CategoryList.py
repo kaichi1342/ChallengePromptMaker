@@ -25,12 +25,12 @@
 from krita import *  
 import os, json  
 
-from PyQt5.QtCore import ( Qt, pyqtSignal, QEvent)
+from PyQt6.QtCore import ( Qt, pyqtSignal, QEvent)
 
-from PyQt5.QtGui import (QStandardItemModel)
+from PyQt6.QtGui import (QStandardItemModel)
 
 
-from PyQt5.QtWidgets import ( 
+from PyQt6.QtWidgets import ( 
         QWidget, QFrame, QDialog, QDoubleSpinBox,
         QVBoxLayout, QHBoxLayout, QGridLayout, QSpacerItem, QSizePolicy,
         QLabel, QPushButton, QToolButton, QComboBox , QCheckBox,
@@ -365,7 +365,7 @@ class CategoryDialog(QDialog):
     #Event Filter
 
     def eventFilter(self, source, event):
-        if (event.type() == QEvent.ContextMenu and source is self.list_item):
+        if (event.type() == QEvent.Type.ContextMenu and source is self.list_item):
             menu = QMenu()
             menu.addAction('Edit Item')
             if menu.exec_(event.globalPos()):
@@ -373,7 +373,7 @@ class CategoryDialog(QDialog):
                 self.txt_list.setText(item.text())
                 self.toEditRow = item 
             return True
-        elif (event.type() == QEvent.ContextMenu and source is self.list_category):
+        elif (event.type() == QEvent.Type.ContextMenu and source is self.list_category):
             menu = QMenu()
             menu.addAction('Edit Category')
             if menu.exec_(event.globalPos()):
@@ -400,11 +400,11 @@ class CategoryDialog(QDialog):
 
                     if cat in selected_keys:     
                         if selected_slot[cat] == 1:
-                            item.setCheckState(Qt.Checked)
+                            item.setCheckState(Qt.CheckState.Checked)
                         else:
-                            item.setCheckState(Qt.Unchecked)
+                            item.setCheckState(Qt.CheckState.Unchecked)
                     else:
-                        item.setCheckState(Qt.Unchecked)
+                        item.setCheckState(Qt.CheckState.Unchecked)
 
                     self.list_category.addItem(item)       
 

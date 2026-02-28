@@ -161,8 +161,13 @@ If the global pressure setting is off, then this plugin pressure setting will al
 ## Downloads - Install - Execute 
 
 ### Download
-- **[ZIP](https://github.com/kaichi1342/ChallengePromptMaker/archive/refs/heads/v.0.1.3.zip)**
 - **[Source](https://github.com/kaichi1342/ChallengePromptMaker)**
+
+For Krita 5.2.x
+- **[ZIP](https://github.com/kaichi1342/ChallengePromptMaker/archive/refs/heads/v.0.1.3.zip)**
+
+For Krita 6.0.x
+- **[ZIP](https://github.com/kaichi1342/ChallengePromptMaker/archive/refs/heads/v.0.1.3b.zip)**
 
 ### Install
 
@@ -179,13 +184,19 @@ if not enable it by going to Settings -> Configure Krita -> **Python Plugin Mana
 
 ### Tested Platforms
 - Krita 5.1.1 
+- Krita 5.2.x
+- Krita 6.0 beta 2 
 
 ### Release Log
 
-2022-10-09  : Version 0.1.0
-- First Released Version  
+2026-02-28  : Version 0.1.3b
+- Port to PyQt6
+
 2023-09-09  : Version 0.1.3
 - Change setupColor to use MangeColor.fromQcolor
+
+2022-10-09  : Version 0.1.0
+- First Released Version  
   
 ## License
 

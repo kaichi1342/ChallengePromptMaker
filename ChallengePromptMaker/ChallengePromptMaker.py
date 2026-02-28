@@ -27,10 +27,10 @@ import  os,random, json
 from datetime import datetime
 
  
-from PyQt5.QtCore import ( Qt, QSize,  QTimer )
+from PyQt6.QtCore import ( Qt, QSize,  QTimer )
  
 
-from PyQt5.QtWidgets import ( 
+from PyQt6.QtWidgets import ( 
         QVBoxLayout, QWidget, QLabel,  QGridLayout,  QToolButton  
 )
 
@@ -121,13 +121,13 @@ class ChallengePromptMaker(DockWidget):
 
         self.label_prompt       = QLabel(self)
         self.label_prompt.setText("Challenge\nPrompt\nHere!")
-        self.label_prompt.setAlignment(Qt.AlignCenter)
+        self.label_prompt.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_prompt.setStyleSheet("border: 1px dashed #666666")
         self.label_prompt.setWordWrap(True)
         
         self.label_time        = QLabel(self)
         self.label_time.setText("HH:MM:SS")
-        self.label_time.setAlignment(Qt.AlignCenter) 
+        self.label_time.setAlignment(Qt.AlignmentFlag.AlignCenter) 
         self.label_time.setStyleSheet("font-size: 12px; font-weight:bold; ")
         self.label_time.setWordWrap(True)
 
@@ -321,8 +321,7 @@ class ChallengePromptMaker(DockWidget):
         random.seed()
         self.colorbox4.changeColorHSV( cm.pickHue(hue, random.randint(170, 190)), cm.pickSat(sat, True), cm.pickVal(val, True))
         
-        
-
+         
 
     
     def setFGColor(self,ColorBox):   
@@ -331,9 +330,3 @@ class ChallengePromptMaker(DockWidget):
 
   
  
-instance = Krita.instance()
-dock_widget_factory = DockWidgetFactory(DOCKER_ID,
-                                        DockWidgetFactoryBase.DockRight,
-                                        ChallengePromptMaker)
-
-instance.addDockWidgetFactory(dock_widget_factory)
